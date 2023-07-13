@@ -12,11 +12,14 @@ export class ApiMinecraftService {
         this.host = "192.168.0.101";
     }
     async createClient(clientID: string): Promise<any>{
+        let duplicate_bool = false;
         this.clients.forEach((client)=>{
-            if(client.username == clientID){
-                return new HttpException(`Player with username ${clientID} has already been added!`, 400);
+            if(client.username === clientID){
+                duplicate_bool = true;
             }
-        })
+        });
+        if(duplicate_bool)
+            return new HttpException(`Player with username ${clientID} has already been added!`, 400);
         const newClient = createClient({
             username: clientID,
             host: this.host,
@@ -26,7 +29,7 @@ export class ApiMinecraftService {
             let json_data;
             try{
                 json_data = JSON.parse(data.formattedMessage);
-                if(json_data?.translate == 'sleep.players_sleeping'){
+                if(json_data?.translate === 'sleep.players_sleeping'){
                     newClient.end();
                     this.clients.delete(newClient);
                     await new Promise(resolve => setTimeout(resolve, 10000));
@@ -50,15 +53,19 @@ export class ApiMinecraftService {
         })
         return activeClients;
     }
-    async removeClient(id: string): Promise<boolean>{
+    async removeClient(id: string): Promise<string>{
+        let matched = false;
         this.clients.forEach((client)=>{
-            if(client.username == id){
+            if(client.username === id){
+                matched = true;
                 client.end();
                 this.clients.delete(client);
-                return true;
             }
         });
-        return false;
+        if(!matched)
+            return "Client not found";
+        else
+            return `Client ${id} removed successfully`;
     }
     async setHost(newHost: string){
         this.host = newHost;

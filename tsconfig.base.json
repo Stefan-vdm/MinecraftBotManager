@@ -17,7 +17,8 @@
     "paths": {
       "@automated-minecraft-bot/api/minecraft": [
         "libs/api/minecraft/src/index.ts"
-      ]
+      ],
+      "@automated-minecraft-bot/app/home": ["libs/app/home/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
