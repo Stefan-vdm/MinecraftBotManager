@@ -18,6 +18,7 @@
       "@automated-minecraft-bot/api/minecraft": [
         "libs/api/minecraft/src/index.ts"
       ],
+      "@automated-minecraft-bot/app/api": ["libs/app/api/src/index.ts"],
       "@automated-minecraft-bot/app/home": ["libs/app/home/src/index.ts"]
     }
   },
