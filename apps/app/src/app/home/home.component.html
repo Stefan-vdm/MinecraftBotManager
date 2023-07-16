@@ -1,10 +1,10 @@
-<div class="w-full h-full justify-center flex content-center align-middle">
-    <div class="w-full h-full sm:w-1/2 sm:h-3/4 m-auto transition-all duration-150 bg-opacity-25 bg-slate-800 rounded-none sm:rounded-md md:rounded-lg lg:rounded-xl text-white overflow-hidden">
-        <input type="text" class="sm:rounded-tl-lg w-2/3 bg-slate-500 outline-none border-none pl-5 h-10" placeholder="player name" [(ngModel)]="playerID" (keyup.enter)="addPlayer()">
-        <input type="button" class="sm:rounded-tr-lg w-1/3 bg-slate-500 hover:bg-slate-800 hover:underline hover:cursor-pointer h-10" value="add player" (click)="addPlayer()">
-        <div class="p-4 justify-between flex flex-row" *ngFor="let player of players; let i=index" [ngClass]="{'bg-slate-800': i % 2 === 1, 'bg-slate-700': i % 2 !== 1 }">
-            <h1 class="text-lg">{{ player }}</h1>
-            <input type="button" class="rounded-full hover:text-red-600 w-12 h-12 text-center align-middle hover:cursor-pointer" value="x" (click)="removePlayer(player)">
+<div class="w-full h-full justify-center flex content-center align-middle transition-all duration-300">
+    <div class="w-full h-full sm:w-1/2 sm:h-3/4 m-auto transition-all duration-300 bg-opacity-25 bg-slate-800 rounded-none sm:rounded-md md:rounded-lg lg:rounded-xl text-white overflow-hidden">
+        <input type="text" class="sm:rounded-tl-lg w-2/3 bg-slate-500 outline-none border-none pl-5 h-10 transition-all duration-300" placeholder="player name" [(ngModel)]="playerID" (keyup.enter)="addPlayer()">
+        <input type="button" class="sm:rounded-tr-lg w-1/3 bg-slate-500 hover:bg-slate-800 hover:underline hover:cursor-pointer h-10 transition-all duration-300" value="add player" (click)="addPlayer()">
+        <div class="p-4 justify-between flex flex-row transition-all duration-300" *ngFor="let player of players; let i=index" [ngClass]="{'bg-slate-800': i % 2 === 1, 'bg-slate-700': i % 2 !== 1 }">
+            <h1 class="text-lg transition-all duration-300">{{ player }}</h1>
+            <input type="button" class="rounded-full hover:text-red-600 w-12 h-12 text-center align-middle hover:cursor-pointer transition-all duration-300" value="x" (click)="removePlayer(player)">
         </div>
     </div>
 </div>
