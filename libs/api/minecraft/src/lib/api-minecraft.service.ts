@@ -53,7 +53,7 @@ export class ApiMinecraftService {
         })
         return activeClients;
     }
-    async removeClient(id: string): Promise<string>{
+    async removeClient(id: string): Promise<boolean>{
         let matched = false;
         this.clients.forEach((client)=>{
             if(client.username === id){
@@ -63,9 +63,9 @@ export class ApiMinecraftService {
             }
         });
         if(!matched)
-            return "Client not found";
+            return false;
         else
-            return `Client ${id} removed successfully`;
+            return true;
     }
     async setHost(newHost: string){
         this.host = newHost;
