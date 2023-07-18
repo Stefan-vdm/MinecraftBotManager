@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@automated-minecraft-bot/api/auth": ["libs/api/auth/src/index.ts"],
       "@automated-minecraft-bot/api/localguard": [
         "libs/api/localguard/src/index.ts"
       ],
@@ -22,7 +23,8 @@
         "libs/api/minecraft/src/index.ts"
       ],
       "@automated-minecraft-bot/app/api": ["libs/app/api/src/index.ts"],
-      "@automated-minecraft-bot/app/home": ["libs/app/home/src/index.ts"]
+      "@automated-minecraft-bot/app/home": ["libs/app/home/src/index.ts"],
+      "@automated-minecraft-bot/interfaces": ["libs/interfaces/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
