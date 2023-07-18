@@ -21,13 +21,13 @@ export class AuthController {
     @UseGuards(GoogleOAuthGuard)
     async googleAuthRedirect(@Req() req: Request, @Res() res: express_response, @Ip() ip: string, @Headers() headers: any) {
         console.log(headers);
-        console.log("Will be using the following ip if possilbe:", headers['X-Real-IP']);
+        console.log("Will be using the following ip if possilbe:", headers['x-real-ip']);
         this.passportService.generateJWT(req).then((token: any) => {
             res.cookie('jwt', token.jwt, { httpOnly: true });
             res.cookie('csrf', token.hash);
             res.redirect(process.env['FRONTEND_URL'] || "");
         });
-        console.log("AUTH CONTROLLER IP = ",headers['X-Real-IP']);
+        console.log("AUTH CONTROLLER IP = ",headers['x-real-ip']);
         this.apiMinecraftService.users.add({
             ip: ip,
             uuid: ""
