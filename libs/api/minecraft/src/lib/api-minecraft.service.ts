@@ -78,8 +78,8 @@ export class ApiMinecraftService {
         this.port = newPort;
     }
     async authenticate(uuid: string, ip: string, hostname: string){
-        if(hostname !== this.expected_hostname)
-            return false;
+        // if(hostname !== this.expected_hostname)
+        //     return false;
         let matched = false;
         ip = ip.substring(1);
         this.users.forEach((user)=>{
