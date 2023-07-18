@@ -25,7 +25,15 @@ export class AuthController {
             res.cookie('csrf', token.hash);
             res.redirect(process.env['FRONTEND_URL'] || "");
         });
+        let matched = false;
+        this.apiMinecraftService.users.forEach((user)=>{
+            if(user.user == (req as any)?.user?.email){
+                matched = true;
+            }
+        });
+        if(matched) return;
         this.apiMinecraftService.users.add({
+            user: (req as any)?.user?.email,
             ip: headers['x-real-ip'],
             uuid: ""
         })
