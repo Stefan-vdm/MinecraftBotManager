@@ -12,7 +12,7 @@ jobs:
             - name: Connect to server and trigger update
               uses: appleboy/ssh-action@master
               with:
-                host:   ${{ secrets.HOST} }
+                host:   ${{ secrets.HOST }}
                 port:   ${{ secrets.PORT }}
                 username: ${{ secrets.USERNAME }}
                 key: ${{ secrets.KEY }}
