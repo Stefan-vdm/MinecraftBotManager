@@ -18,3 +18,4 @@ jobs:
                 key: ${{ secrets.KEY }}
                 script: |
                     sudo /root/main.sh
+
