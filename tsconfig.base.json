@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@automated-minecraft-bot/api/auth": ["libs/api/auth/src/index.ts"],
+      "@automated-minecraft-bot/api/guards": ["libs/api/guards/src/index.ts"],
       "@automated-minecraft-bot/api/localguard": [
         "libs/api/localguard/src/index.ts"
       ],
