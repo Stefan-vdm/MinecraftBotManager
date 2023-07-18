@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Headers, Ip, UseGuards, HttpException } from '@nestjs/common';
 import { ApiMinecraftService } from './api-minecraft.service';
 import { LocalGuard } from '@automated-minecraft-bot/api/localguard';
+import { CsrfGuard, JwtGuard } from '@automated-minecraft-bot/api/guards';
 
 @Controller('api-minecraft')
 export class ApiMinecraftController {
@@ -19,16 +20,19 @@ export class ApiMinecraftController {
   }
 
   @Get('activePlayers')
+  @UseGuards(JwtGuard, CsrfGuard)
   async getActivePlayers(): Promise<Array<string>>{
     return await this.apiMinecraftService.getActiveClients();
   }
 
   @Get('removePlayer/:id')
+  @UseGuards(JwtGuard, CsrfGuard)
   async removeExistingPlayer(@Param('id') id: string){
     return await this.apiMinecraftService.removeClient(id);
   }
 
   @Get('addPlayer/:id')
+  @UseGuards(JwtGuard, CsrfGuard)
   async createNewPlayer(@Param('id') id: string){
     return await this.apiMinecraftService.createClient(id);
   }
