@@ -82,10 +82,9 @@ export class ApiMinecraftService {
         //     return false;
         let matched = false;
         ip = ip.substring(1);
+        console.log("authentication has been called with the following details from mc: ", uuid, ip, hostname);
+        console.log("here is the users array: ", this.users);
         this.users.forEach((user)=>{
-            console.log("COMPARING", user.uuid, uuid, user.ip, ip);
-            console.log(isEqual(user.ip, ip));
-            console.log(user.uuid === "" || user.uuid === uuid);
             if((user.uuid === uuid || user.uuid === "") && isEqual(user.ip, ip)){
                 matched = true;
                 if(user.uuid === ""){
