@@ -8,7 +8,7 @@ export class ApiMinecraftService {
     port: number;
     host: string;
     users: Set<any>;
-    expected_hostname = "localhost:25565"
+    expected_hostname = "skam.duckdns.org"
     constructor() {
         this.clients = new Set<Client>();
         this.port = 25565;
