@@ -19,7 +19,7 @@ export class AuthController {
 
     @Get('google/callback')
     @UseGuards(GoogleOAuthGuard)
-    async googleAuthRedirect(@Req() req: Request, @Res() res: express_response, @Ip() ip: string, @Headers() headers: any) {
+    async googleAuthRedirect(@Req() req: Request, @Res() res: express_response, @Headers() headers: any) {
         console.log(headers);
         console.log("Will be using the following ip if possilbe:", headers['x-real-ip']);
         this.passportService.generateJWT(req).then((token: any) => {
@@ -29,7 +29,7 @@ export class AuthController {
         });
         console.log("AUTH CONTROLLER IP = ",headers['x-real-ip']);
         this.apiMinecraftService.users.add({
-            ip: ip,
+            ip: headers['x-real-ip'],
             uuid: ""
         })
     }
