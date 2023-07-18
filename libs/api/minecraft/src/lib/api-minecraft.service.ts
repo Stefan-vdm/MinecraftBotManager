@@ -1,4 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
+import { match } from 'assert';
 import { Client, createClient } from 'minecraft-protocol';
 
 @Injectable()
@@ -6,10 +7,18 @@ export class ApiMinecraftService {
     clients: Set<Client>;
     port: number;
     host: string;
+    users: Set<any>;
+    expected_hostname = "localhost:25565"
     constructor() {
         this.clients = new Set<Client>();
         this.port = 25565;
         this.host = "192.168.0.101";
+        this.users = new Set<any>([
+            {
+                uuid: '044d2543-7f3a-35ca-855c-40be9fd55c7e',
+                ip: '/127.0.0.1',
+            }
+        ]);
     }
     async createClient(clientID: string): Promise<any>{
         let duplicate_bool = false;
@@ -72,5 +81,15 @@ export class ApiMinecraftService {
     }
     async setPort(newPort: number){
         this.port = newPort;
+    }
+    async authenticate(uuid: string, ip: string, hostname: string){
+        if(hostname !== this.expected_hostname)
+            return false;
+        let matched = false;
+        this.users.forEach((user)=>{
+            if(user.uuid === uuid && user.ip === ip)
+                matched = true;
+        })
+        return matched;
     }
 }
